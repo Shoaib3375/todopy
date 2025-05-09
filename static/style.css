@@ -48,7 +48,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: lightseagreen;
 }
 
 /* Task list */
@@ -70,7 +70,8 @@ li {
 
 li.completed {
     text-decoration: line-through;
-    color: gray;
+    color: #414ec4;
+    text-decoration-thickness: 2px;
 }
 
 a {
@@ -83,3 +84,4 @@ a {
 a:hover {
     color: red;
 }
+

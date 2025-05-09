@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>To-Do List</title>
     <link rel="stylesheet" href="/static/style.css">
@@ -14,7 +14,8 @@
         <ul>
             {% for task in tasks %}
                 <li class="{{ 'completed' if task.completed else '' }}">
-                    {{ task.content }}
+                    <span style="padding-right: 20px;">{{ task.id }}</span>{{ task.content }}
+
                     <a href="/complete/{{ task.id }}">✔️</a>
                     <a href="/delete/{{ task.id }}">🗑️</a>
                 </li>
