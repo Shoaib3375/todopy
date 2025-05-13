@@ -1,33 +1,26 @@
 from flask import Blueprint, render_template, request, redirect
-from models import Task
-from database import db
+import task_manager
 
-main = Blueprint('main', __name__)
+task_routes = Blueprint('task_routes', __name__)
 
-@main.route('/')
+@task_routes.route('/')
 def index():
-    tasks = Task.query.all()
+    tasks = task_manager.load_tasks()
     return render_template('index.html', tasks=tasks)
 
-@main.route('/add', methods=['POST'])
+@task_routes.route('/add', methods=['POST'])
 def add():
     content = request.form['content']
     if content:
-        task = Task(content=content)
-        db.session.add(task)
-        db.session.commit()
+        task_manager.add_task(content)
     return redirect('/')
 
-@main.route('/complete/<int:id>')
+@task_routes.route('/complete/<int:id>')
 def complete(id):
-    task = Task.query.get_or_404(id)
-    task.completed = not task.completed
-    db.session.commit()
+    task_manager.toggle_task_completion(id)
     return redirect('/')
 
-@main.route('/delete/<int:id>')
+@task_routes.route('/delete/<int:id>')
 def delete(id):
-    task = Task.query.get_or_404(id)
-    db.session.delete(task)
-    db.session.commit()
+    task_manager.delete_task(id)
     return redirect('/')
