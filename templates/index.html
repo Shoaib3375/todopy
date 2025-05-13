@@ -12,15 +12,18 @@
             <button type="submit">Add</button>
         </form>
         <ul>
-            {% for task in tasks %}
-                <li class="{{ 'completed' if task.completed else '' }}">
-                    <span style="padding-right: 20px;">{{ task.id }}</span>{{ task.content }}
+    {% for task in tasks %}
+    <li class="task-item {% if task.completed %}completed{% endif %}">
+        <span class="task-id">{{ task.id }}</span>
+        <span class="task-content">{{ task.content }}</span>
+        <span class="task-actions">
+            <a href="/complete/{{ task.id }}" title="Mark Complete ✅">✔️</a>
+            <a href="/delete/{{ task.id }}" title="Delete 🗑️">🗑️</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
 
-                    <a href="/complete/{{ task.id }}">✔️</a>
-                    <a href="/delete/{{ task.id }}">🗑️</a>
-                </li>
-            {% endfor %}
-        </ul>
     </div>
 </body>
 </html>
