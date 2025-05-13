@@ -2,12 +2,12 @@
     {
         "id": 1,
         "content": "Shopping",
-        "completed": false
+        "completed": true
     },
     {
         "id": 2,
         "content": "presentation projects",
-        "completed": false
+        "completed": true
     },
     {
         "id": 3,
@@ -17,6 +17,11 @@
     {
         "id": 4,
         "content": "To Be best",
-        "completed": false
+        "completed": true
+    },
+    {
+        "id": 5,
+        "content": "fasdfsdf",
+        "completed": true
     }
 ]
